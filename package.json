@@ -1,0 +1,30 @@
+{
+  "name": "task-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/app.js",
+    "offline": "npx serverless offline start",
+    "dev:all": "concurrently \"npm run dev\" \"npm run offline\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "aws-sdk": "^2.1692.0",
+    "express": "^4.21.2",
+    "joi": "^17.13.3",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "aws-serverless-express": "^3.4.0",
+    "concurrently": "^9.1.2",
+    "dotenv": "^16.4.7",
+    "nodemon": "^3.1.9",
+    "serverless": "^3.40.0",
+    "serverless-offline": "^9.3.1"
+  }
+}

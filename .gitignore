@@ -1,0 +1,27 @@
+# Node
+node_modules
+.env
+npm-debug.log
+dist
+coverage
+
+# Docker
+local-dynamodb/
+*.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Swagger Editor
+swagger-editor/
+
+# Logs
+logs
+*.log
+
+# Serverless
+.serverless/
+
+# VSCode
+.vscode/

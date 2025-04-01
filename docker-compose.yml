@@ -1,0 +1,19 @@
+services:
+  dynamodb:
+    image: amazon/dynamodb-local
+    ports:
+      - "8000:8000"
+    container_name: dynamodb-local
+    command: "-jar DynamoDBLocal.jar -sharedDb"
+
+  nodeapp:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - IS_OFFLINE=true
+    depends_on:
+      - dynamodb
