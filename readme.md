@@ -43,7 +43,7 @@ npm run dev:all
 5. **Open Swagger UI**
 
 ```
-http://localhost:4000/api/api-docs
+http://localhost:4000/api-docs/
 ```
 
 ---
