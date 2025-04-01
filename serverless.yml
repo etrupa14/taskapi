@@ -6,8 +6,22 @@ provider:
   name: aws
   runtime: nodejs16.x
   region: us-east-1
+  stage: dev
   environment:
-    IS_OFFLINE: true
+    TABLE_NAME: Tasks
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:PutItem
+            - dynamodb:GetItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+            - dynamodb:Scan
+            - dynamodb:Query
+          Resource:
+            - arn:aws:dynamodb:us-east-1:${aws:accountId}:table/${self:provider.environment.TABLE_NAME}
 
 functions:
   api:
@@ -17,6 +31,7 @@ functions:
           path: /{proxy+}
           method: any
           cors: true
+    timeout: 30
 
 plugins:
   - serverless-offline
@@ -30,7 +45,7 @@ resources:
     TasksTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: Tasks
+        TableName: ${self:provider.environment.TABLE_NAME}
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
